@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="RealFishki.Views.Fishki"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="Fill"
+            VerticalOptions = "Center">
+            <Frame x:Name="frame"
+                BackgroundColor="AliceBlue"
+                HasShadow="False">
+                <Grid x:Name="fiszka"
+                    WidthRequest = "300"
+                    HeightRequest = "400"
+                    HorizontalOptions = "Center"
+                    VerticalOptions = "Center"
+                    BackgroundColor = "Aqua">
+                </Grid>
+            </Frame>
+            <StackLayout
+                Orientation="Horizontal"
+                HorizontalOptions="Center">
+                <Button x:Name="got_it" Text="Got it" Clicked="Got_it"/>
+                <Button x:Name="show" Text="Show" Clicked="Show"/>
+                <Button x:Name="refresh" Text="Refresh" Clicked="Refresh"/>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
