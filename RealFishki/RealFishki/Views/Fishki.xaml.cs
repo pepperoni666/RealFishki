@@ -25,6 +25,7 @@ namespace RealFishki.Views
 
             fiszka.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
             fiszka.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
+            fiszka.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
 
 
             var tapGestureRecognizer = new TapGestureRecognizer();
@@ -49,14 +50,16 @@ namespace RealFishki.Views
         private void setFishka()
         {
             visible = false;
-            String title;
+            String title, subject;
             if (viewModel.FishkiItems.Count == 0)
             {
-                title = "Sample";
+                title = "Task";
+                subject = "Subject";
             }
             else
             {
                 title = viewModel.FishkiItems.ElementAt(i).Text;
+                subject = viewModel.DataStore.GetCategoryAsync(viewModel.FishkiItems.ElementAt(i).CatId).Subject;
             }
 
             var text = new Label()
@@ -69,18 +72,33 @@ namespace RealFishki.Views
                 Margin = new Thickness(5, 5, 5, 0)
             };
 
+            var sub = new Label()
+            {
+                Text = subject,
+                FontAttributes = FontAttributes.Bold,
+                HorizontalTextAlignment = TextAlignment.Center,
+                VerticalTextAlignment = TextAlignment.Center,
+                FontSize = 25,
+                Margin = new Thickness(5, 5, 5, 0)
+            };
+
             fiszka.Children.Clear();
-            fiszka.Children.Add(text, 0, 0);
+            fiszka.Children.Add(sub, 0, 0);
+            fiszka.Children.Add(text, 0, 1);
         }
 
         private async void OnFrameTapped(object sender, EventArgs e)
         {
             frame.IsEnabled = false;
+            got_it.IsEnabled = false;
+            refresh.IsEnabled = false;
             await fiszka.RotateYTo(90, 400, Easing.CubicIn);
             setNewFishka();
             await fiszka.RotateYTo(-90, 0);
             frame.IsEnabled = true;
             await fiszka.RotateYTo(0, 400, Easing.CubicOut);
+            got_it.IsEnabled = true;
+            refresh.IsEnabled = true;
         }
 
         public async void Show(object sender, EventArgs e)
@@ -112,7 +130,7 @@ namespace RealFishki.Views
                     Margin = new Thickness(5, 0, 5, 0)
                 };
 
-                fiszka.Children.Add(desc, 0, 1);
+                fiszka.Children.Add(desc, 0, 2);
             }
         }
 

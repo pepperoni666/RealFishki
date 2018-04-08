@@ -14,10 +14,12 @@ namespace RealFishki.ViewModels
     {
         public ObservableCollection<Item> Items { get; set; }
         public Command LoadItemsCommand { get; set; }
+        public Category Category { get; set; }
 
-        public ItemsViewModel()
+        public ItemsViewModel(Category category)
         {
-            Title = "Notes";
+            Category = category;
+            Title = Category.Subject;
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
@@ -25,7 +27,7 @@ namespace RealFishki.ViewModels
             {
                 var _item = item as Item;
                 Items.Add(_item);
-                await DataStore.AddItemAsync(_item);
+                await DataStore.AddItemAsync(_item, Category);
             });
 
             MessagingCenter.Subscribe<ItemDetailPage, Item>(this, "DeleteItem", async (obj, item) =>
@@ -34,6 +36,13 @@ namespace RealFishki.ViewModels
                 Items.Remove(_item);
                 await DataStore.DeleteItemAsync(_item);
             });
+        }
+
+        public void Delete()
+        {
+            MessagingCenter.Unsubscribe<NewItemPage, Item>(this, "AddItem");
+            MessagingCenter.Unsubscribe<NewItemPage, Item>(this, "DeleteItem");
+            Category = null;
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -46,7 +55,9 @@ namespace RealFishki.ViewModels
             try
             {
                 Items.Clear();
-                var items = await DataStore.GetItemsAsync(true);
+                await DataStore.UpdateLocal();
+                var cat = DataStore.GetCategoryAsync(Category.Id);
+                var items = cat.CatItems;
                 foreach (var item in items)
                 {
                     Items.Add(item);

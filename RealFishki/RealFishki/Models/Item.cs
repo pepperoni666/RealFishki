@@ -1,4 +1,6 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
+
 using System;
 
 namespace RealFishki.Models
@@ -11,6 +13,9 @@ namespace RealFishki.Models
         public string Text { get; set; }
 
         public string Description { get; set; }
+
+        [ForeignKey(typeof(Category))]
+        public int CatId { get; set; }
 
         public override string ToString()
         {

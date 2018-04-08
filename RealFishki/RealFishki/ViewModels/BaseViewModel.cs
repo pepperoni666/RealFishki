@@ -12,7 +12,7 @@ namespace RealFishki.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+        public IDataStore<Item, Category> DataStore => DependencyService.Get<IDataStore<Item, Category>>() ?? new MockDataStore();
 
         bool isBusy = false;
         public bool IsBusy

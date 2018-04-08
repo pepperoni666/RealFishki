@@ -18,11 +18,11 @@ namespace RealFishki.Views
 	{
         ItemsViewModel viewModel;
 
-        public ItemsPage()
+        public ItemsPage(ItemsViewModel viewModel)
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new ItemsViewModel();
+            BindingContext = this.viewModel = viewModel;
             viewModel.LoadItemsCommand.Execute(null);
         }
 
@@ -43,11 +43,24 @@ namespace RealFishki.Views
             await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
         }
 
+        protected override bool OnBackButtonPressed()
+        {
+            viewModel.Delete();
+            return false;
+        }
+
         protected override void OnAppearing()
         {
             base.OnAppearing();
             
             viewModel.LoadItemsCommand.Execute(null);
+        }
+
+        async void DeleteCat_Clicked(object sender, EventArgs e)
+        {
+            viewModel.Delete();
+            MessagingCenter.Send(this, "DeleteCategory", viewModel.Category);
+            await Navigation.PopModalAsync();
         }
     }
 }
