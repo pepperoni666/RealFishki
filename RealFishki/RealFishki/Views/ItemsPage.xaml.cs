@@ -58,8 +58,8 @@ namespace RealFishki.Views
 
         async void DeleteCat_Clicked(object sender, EventArgs e)
         {
-            viewModel.Delete();
             MessagingCenter.Send(this, "DeleteCategory", viewModel.Category);
+            viewModel.Delete();
             await Navigation.PopModalAsync();
         }
     }
