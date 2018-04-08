@@ -7,11 +7,13 @@
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Subject" FontSize="Medium" />
-            <Entry Text="{Binding Item.Text}" FontSize="Small" />
-            <Label Text="Description" FontSize="Medium" />
-            <Editor Text="{Binding Item.Description}" FontSize="Small" Margin="0" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Subject" FontSize="Medium" />
+                <Entry Text="{Binding Item.Text}" FontSize="Medium" />
+                <Label Text="Description" FontSize="Medium" />
+                <Editor Text="{Binding Item.Description}" FontSize="Medium" Margin="0" />
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

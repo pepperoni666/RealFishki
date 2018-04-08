@@ -20,10 +20,29 @@ namespace RealFishki.Views
             Category = new Category
             {
                 CatItems = new List<Item>(),
-                Subject = "Subject"
+                Subject = "Subject",
+                Color = "#6A1B9A"
             };
 
             BindingContext = this;
+        }
+
+        async void getColor(object sender, EventArgs e)
+        {
+            var button = sender as Button;
+            Category.Color = GetHexString(button.BackgroundColor);
+            color.TextColor = button.BackgroundColor;
+        }
+
+        private string GetHexString(Xamarin.Forms.Color color)
+        {
+            var red = (int)(color.R * 255);
+            var green = (int)(color.G * 255);
+            var blue = (int)(color.B * 255);
+            var alpha = (int)(color.A * 255);
+            var hex = $"#{alpha:X2}{red:X2}{green:X2}{blue:X2}";
+
+            return hex;
         }
 
         async void Save_Clicked(object sender, EventArgs e)

@@ -11,6 +11,8 @@ namespace RealFishki.Models
 
         public string Subject { get; set; }
 
+        public string Color { get; set; }
+
         [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Item> CatItems { get; set; }
 
@@ -18,6 +20,7 @@ namespace RealFishki.Models
         {
             CatItems = new List<Item>();
             Subject = " ";
+            Color = "#6A1B9A";
         }
     }
 }

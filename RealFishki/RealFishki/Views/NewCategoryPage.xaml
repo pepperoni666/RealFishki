@@ -7,9 +7,41 @@
         <ToolbarItem Text="Save" Clicked="Save_Clicked" />
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
-        <StackLayout Spacing="20" Padding="15">
-            <Label Text="Subject" FontSize="Medium" />
-            <Entry Text="{Binding Category.Subject}" FontSize="Small" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Subject" FontSize="Medium" />
+                <Entry Text="{Binding Category.Subject}" FontSize="Medium" />
+                <Label x:Name="color" Text="Color" FontSize="Medium" TextColor="#C62828" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal" Spacing="5">
+                    <Button Text="    " BackgroundColor="#C62828" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#AD1457" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#6A1B9A" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#4527A0" Clicked="getColor"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="5">
+                    <Button Text="    " BackgroundColor="#283593" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#1565C0" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#0277BD" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#00838F" Clicked="getColor"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="5">
+                    <Button Text="    " BackgroundColor="#00695C" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#2E7D32" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#558B2F" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#9E9D24" Clicked="getColor"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="5">
+                    <Button Text="    " BackgroundColor="#F9A825" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#FF8F00" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#EF6C00" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#D84315" Clicked="getColor"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" Spacing="5">
+                    <Button Text="    " BackgroundColor="#4E342E" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#424242" Clicked="getColor"/>
+                    <Button Text="    " BackgroundColor="#37474F" Clicked="getColor"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

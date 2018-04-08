@@ -14,8 +14,7 @@
                     WidthRequest = "300"
                     HeightRequest = "400"
                     HorizontalOptions = "Center"
-                    VerticalOptions = "Center"
-                    BackgroundColor = "Aqua">
+                    VerticalOptions = "Center">
                 </Grid>
             </Frame>
             <StackLayout

@@ -21,11 +21,14 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="10">
+                            <StackLayout Padding="18" Orientation="Horizontal">
+                                <BoxView Color="{Binding Color}" 
+                                         WidthRequest="10"
+                                         HeightRequest="10"/>
                                 <Label Text="{Binding Subject}" 
-                       LineBreakMode="NoWrap" 
-                       Style="{DynamicResource ListItemTextStyle}" 
-                       FontSize="16" />
+                                    LineBreakMode="NoWrap" 
+                                    Style="{DynamicResource ListItemTextStyle}" 
+                                    FontSize="25" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

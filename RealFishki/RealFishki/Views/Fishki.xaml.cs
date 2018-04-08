@@ -50,16 +50,18 @@ namespace RealFishki.Views
         private void setFishka()
         {
             visible = false;
-            String title, subject;
+            String title, subject, color;
             if (viewModel.FishkiItems.Count == 0)
             {
                 title = "Task";
                 subject = "Subject";
+                color = "#AD1457";
             }
             else
             {
                 title = viewModel.FishkiItems.ElementAt(i).Text;
                 subject = viewModel.DataStore.GetCategoryAsync(viewModel.FishkiItems.ElementAt(i).CatId).Subject;
+                color = viewModel.DataStore.GetCategoryAsync(viewModel.FishkiItems.ElementAt(i).CatId).Color;
             }
 
             var text = new Label()
@@ -69,6 +71,7 @@ namespace RealFishki.Views
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = 25,
+                TextColor = Color.White,
                 Margin = new Thickness(5, 5, 5, 0)
             };
 
@@ -79,10 +82,12 @@ namespace RealFishki.Views
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
                 FontSize = 25,
+                TextColor = Color.White,
                 Margin = new Thickness(5, 5, 5, 0)
             };
 
             fiszka.Children.Clear();
+            fiszka.BackgroundColor = Color.FromHex(color);
             fiszka.Children.Add(sub, 0, 0);
             fiszka.Children.Add(text, 0, 1);
         }
@@ -127,6 +132,7 @@ namespace RealFishki.Views
                     HorizontalTextAlignment = TextAlignment.Center,
                     VerticalTextAlignment = TextAlignment.Center,
                     FontSize = 16,
+                    TextColor = Color.White,
                     Margin = new Thickness(5, 0, 5, 0)
                 };
 
